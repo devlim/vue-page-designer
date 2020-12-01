@@ -1,0 +1,18 @@
+version: '3.7'
+
+networks:
+  vue_page_designer_demo: # Change to your application network name
+
+services:
+  app:
+    image: node:14.11.0-alpine
+    container_name: vue_page_designer_container
+    restart: unless-stopped
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: npm run start # change to start after build?
+    ports:
+      - 5454:8080
+    networks:
+      - vue_page_designer_demo
